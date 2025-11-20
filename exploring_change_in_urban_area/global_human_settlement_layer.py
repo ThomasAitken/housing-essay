@@ -1,8 +1,10 @@
 import pandas as pd, numpy as np
 from pathlib import Path
+from zipfile import ZipFile
+from io import BytesIO
 
-MTUC_CSV   = Path("ghs_mtuc.csv")      # area by year
-FIXED_XLSX  = Path("ghs_fixed_boundary.xlsx")           # population by year
+MTUC_CSV      = Path("ghs_mtuc.csv")                # area by year
+FIXED_XLSX_ZIP = Path("ghs_fixed_boundary.xlsx.zip")  # ZIP containing the XLSX
 
 CITIES = [
     ("Stockholm", "SWE"),
@@ -58,10 +60,16 @@ MT_A2025_COL = "MT_UCA_KM2_2025"
 mt[MT_A2000_COL] = coerce_area(mt[MT_A2000_COL])
 mt[MT_A2025_COL] = coerce_area(mt[MT_A2025_COL])
 
-# ---------- load FIXED (POP) from XLSX ----------
-xf = pd.ExcelFile(FIXED_XLSX)
+# ---------- load FIXED (POP) from ZIPped XLSX ----------
+with ZipFile(FIXED_XLSX_ZIP, "r") as zf:
+    # Adjust this if you know the exact filename inside the ZIP
+    xlsx_name = next(n for n in zf.namelist() if n.lower().endswith(".xlsx"))
+    with zf.open(xlsx_name) as f:
+        xlsx_bytes = f.read()
+
+# Now read the Excel from an in-memory buffer
 sheet_name = "GHSL"
-fx_df = xf.parse(sheet_name, dtype=str)
+fx_df = pd.read_excel(BytesIO(xlsx_bytes), sheet_name=sheet_name, dtype=str)
 
 POP_2000_COL = "GH_POP_TOT_2000"
 POP_2025_COL = "GH_POP_TOT_2025"
@@ -77,7 +85,7 @@ for city, iso in CITIES:
     f = pick_row(fx_df, COUNTRY_NAME_COL, city)
 
     a0, a1 = float(m[MT_A2000_COL]), float(m[MT_A2025_COL])       # km²
-    p0, p1 = (round(float(f[POP_2000_COL])), round(float(f[POP_2025_COL])))                   # persons (ints/NaN)
+    p0, p1 = (round(float(f[POP_2000_COL])), round(float(f[POP_2025_COL])))  # persons (ints/NaN)
 
     dA = a1 - a0
     dP = (p1 - p0) if pd.notna(p1) and pd.notna(p0) else np.nan
@@ -86,6 +94,8 @@ for city, iso in CITIES:
     density_2000 = (p0 / a0) if pd.notna(p0) and a0 > 0 else np.nan
     density_2025 = (p1 / a1) if pd.notna(p1) and a1 > 0 else np.nan
     density_chg_pct = None
+    adj_density_chg_pct = None
+
     if pd.notna(density_2000) and pd.notna(density_2025) and density_2000 > 0:
         density_chg_pct = (density_2025 - density_2000) / density_2000 * 100
         # Compute "expansion-adjusted change in density (%)" according to the following assumptions:
