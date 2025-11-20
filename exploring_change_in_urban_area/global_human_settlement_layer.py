@@ -1,5 +1,4 @@
-# ucdb_expansion_per_person_hybrid.py
-import pandas as pd, re, numpy as np
+import pandas as pd, numpy as np
 from pathlib import Path
 
 MTUC_CSV   = Path("ghs_mtuc.csv")      # area by year

@@ -4,7 +4,7 @@ Portugal: new-dwelling completions vs implied demand from population growth (201
 - Blue bars: dwellings completed (new family housing)
 - Black line: implied dwellings from population change, using persons_per_dwelling (default 2.4)
 
-You can edit the DATA section below to adjust values or extend to new years.
+Edit the DATA section below to adjust values or extend to new years.
 Optionally, you may pass --ppd to change persons-per-dwelling.
 
 Outputs:
@@ -14,7 +14,6 @@ Outputs:
 
 import argparse
 from pathlib import Path
-import math
 import pandas as pd
 import matplotlib.pyplot as plt
 

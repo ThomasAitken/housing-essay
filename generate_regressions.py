@@ -1,6 +1,5 @@
 import argparse
 from pathlib import Path
-import json
 
 import numpy as np
 import pandas as pd
@@ -427,25 +426,7 @@ def compute_stats_from_2010(df, outdir):
         reflect_stats_box=True,
         x_cols_short=["Pop Growth % since 2010", "Real Wage Growth % since 2010", "Change in Dwellings % since 2010"]
     )
-
-    # --- Save quick summary JSON + full OLS summaries ---
-    summary = {}
-    # TODO: fix this
-    summary.update([
-        get_bivar(df, COL_INIT_DW, COL_PPGMR, "Pred 1a (excl KR)"),
-    ])
-    # TODO: fix this
-    # with open(outdir / "model_summaries.txt", "w") as fh:
-        # TODO: fix this
-        # fh.write("=== Prediction 2b OLS ===\n")
-        # fh.write(str(model2b.summary()) + "\n\n")
-        # fh.write("=== Prediction 3a OLS ===\n")
-        # fh.write(str(model3a.summary()) + "\n\n")
-        # fh.write("=== Prediction 3b OLS ===\n")
-        # fh.write(str(model3b.summary()) + "\n\n")
     
-    return summary
-
 def compute_stats_from_2000(df, outdir):
     COL_POP_GROW = get_pop_growth_col_name('2000')
     COL_PROP_GROW = get_property_growth_col_name('2000')
@@ -546,28 +527,6 @@ def compute_stats_from_2000(df, outdir):
         reflect_stats_box=True
     )
 
-    # --- Prediction 1a (all): Initial urban density compared to PPGMR, all countries ---
-    scatter_with_stats(
-        df, COL_DENS_INIT, COL_PPGMR,
-        outdir / "pred1a_all.png",
-        title="Prediction 1 [Demographia Density, all countries]"
-    )
-
-    # --- Prediction 1c (excl. NZ, IR): % Flats compared to PPGMR ---
-    # Exclude NZ for reason of lack of data and Ireland as outlier
-    df_excl_nz_ir = df[~df['Country'].isin(['New Zealand', 'Ireland'])]
-    scatter_with_stats(
-        df_excl_nz_ir, COL_FLATS_PC, COL_PPGMR,
-        outdir / "pred1c_excl_ir.png",
-        title="Prediction 1 [Flats data, excl. NZ, IR]"
-    )
-
-    # --- Save quick summary JSON + full OLS summaries ---
-    summary = {}
-    # TODO: restore this part after I regain Copilot access
-    summary.update([
-    ])
-    return summary
 
 # -----------------------------
 # Main
@@ -606,13 +565,11 @@ def main():
             df[col] = df[col].apply(to_number)
 
     if args.csv == "data_2010-2025.csv":
-        summary = compute_stats_from_2010(df, outdir)
+        compute_stats_from_2010(df, outdir)
     else:
-        summary = compute_stats_from_2000(df, outdir)
+        compute_stats_from_2000(df, outdir)
 
-    (outdir / "summary_stats.json").write_text(json.dumps(summary, indent=2))
-
-    print("Done. Figures and summaries saved to:", str(outdir.resolve()))
+    print("Done. Figures saved to:", str(outdir.resolve()))
 
 
 if __name__ == "__main__":
