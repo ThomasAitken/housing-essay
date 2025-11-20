@@ -1,0 +1,90 @@
+=== Prediction 2b OLS ===
+                                         OLS Regression Results                                         
+========================================================================================================
+Dep. Variable:     Property to Population Growth Multiple Ratio   R-squared:                       0.444
+Model:                                                      OLS   Adj. R-squared:                  0.351
+Method:                                           Least Squares   F-statistic:                     4.786
+Date:                                          Sat, 01 Nov 2025   Prob (F-statistic):             0.0296
+Time:                                                  13:29:48   Log-Likelihood:                 7.2007
+No. Observations:                                            15   AIC:                            -8.401
+Df Residuals:                                                12   BIC:                            -6.277
+Df Model:                                                     2                                         
+Covariance Type:                                      nonrobust                                         
+======================================================================================================
+                                         coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------------------
+const                                  1.9648      0.446      4.408      0.001       0.994       2.936
+Initial Dwellings per 1,000 People    -0.0016      0.001     -1.660      0.123      -0.004       0.001
+% Change in Dwellings per 1000        -0.0149      0.011     -1.325      0.210      -0.039       0.010
+==============================================================================
+Omnibus:                        3.764   Durbin-Watson:                   2.549
+Prob(Omnibus):                  0.152   Jarque-Bera (JB):                1.238
+Skew:                          -0.040   Prob(JB):                        0.539
+Kurtosis:                       1.595   Cond. No.                     4.90e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 4.9e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+
+=== Prediction 3a OLS ===
+                                  OLS Regression Results                                  
+==========================================================================================
+Dep. Variable:     % Change in Dwellings per 1000   R-squared:                       0.143
+Model:                                        OLS   Adj. R-squared:                 -0.029
+Method:                             Least Squares   F-statistic:                    0.8310
+Date:                            Sat, 01 Nov 2025   Prob (F-statistic):              0.464
+Time:                                    13:29:48   Log-Likelihood:                -37.146
+No. Observations:                              13   AIC:                             80.29
+Df Residuals:                                  10   BIC:                             81.99
+Df Model:                                       2                                         
+Covariance Type:                        nonrobust                                         
+============================================================================================================
+                                               coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------------------------
+const                                        9.8960      6.609      1.497      0.165      -4.829      24.621
+Average Major City Initial Urban Density    -0.0010      0.002     -0.645      0.533      -0.005       0.002
+2010-2024 National Population Growth %      -0.2721      0.213     -1.275      0.231      -0.748       0.204
+==============================================================================
+Omnibus:                        1.519   Durbin-Watson:                   2.085
+Prob(Omnibus):                  0.468   Jarque-Bera (JB):                0.821
+Skew:                           0.603   Prob(JB):                        0.663
+Kurtosis:                       2.754   Cond. No.                     1.57e+04
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.57e+04. This might indicate that there are
+strong multicollinearity or other numerical problems.
+
+=== Prediction 3b OLS ===
+                                  OLS Regression Results                                  
+==========================================================================================
+Dep. Variable:     % Change in Dwellings per 1000   R-squared:                       0.285
+Model:                                        OLS   Adj. R-squared:                  0.166
+Method:                             Least Squares   F-statistic:                     2.389
+Date:                            Sat, 01 Nov 2025   Prob (F-statistic):              0.134
+Time:                                    13:29:48   Log-Likelihood:                -41.517
+No. Observations:                              15   AIC:                             89.03
+Df Residuals:                                  12   BIC:                             91.16
+Df Model:                                       2                                         
+Covariance Type:                        nonrobust                                         
+==========================================================================================================
+                                             coef    std err          t      P>|t|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------------
+const                                    -19.7622     18.481     -1.069      0.306     -60.028      20.503
+Initial Dwellings per 1,000 People         0.0506      0.035      1.438      0.176      -0.026       0.127
+2010-2024 National Population Growth %     0.0281      0.222      0.126      0.901      -0.456       0.512
+==============================================================================
+Omnibus:                        2.447   Durbin-Watson:                   1.995
+Prob(Omnibus):                  0.294   Jarque-Bera (JB):                1.086
+Skew:                           0.653   Prob(JB):                        0.581
+Kurtosis:                       3.183   Cond. No.                     7.90e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 7.9e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+
