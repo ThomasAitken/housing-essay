@@ -6,7 +6,7 @@ I am just open-sourcing in the interests of transparency, and so I can document 
 
 ## Notes on Main Datasets: `data_2000-2025.csv` and `data_2010-2025.csv`
 
-A better way of viewing these datasets is on [Google Sheets](https://docs.google.com/spreadsheets/d/1sm-ZR8VECos0gErKGUHBC3uFT7c5id4fr-RSUNHPLnQ/edit?usp=sharing). This dataset was mostly put together in a painstaking fashion using manual data entry. You will note that I give links to the data sources for each of my raw-data columns. For most of these raw-data sources, it is fairly obvious how to reproduce my data entry, although for some there was some simple calculation involved. These special cases are explained below:
+A better way of viewing these datasets is on [Google Sheets](https://docs.google.com/spreadsheets/d/1sm-ZR8VECos0gErKGUHBC3uFT7c5id4fr-RSUNHPLnQ/edit?usp=sharing). This data was mostly put together in a painstaking fashion using manual data entry. You will note that I give links to the data sources for each of my raw-data columns. For most of these raw-data sources, it is fairly obvious how to reproduce my data entry, although for some there was some simple calculation involved. These special cases are explained below:
 
 ### Real Residential Property Price Growth
 As my spreadsheet documents, I obtained this data for every country from the St Louis Fed - specifically their charts, like [this](https://fred.stlouisfed.org/series/QAUR628BIS) that are indexed at 2010. The cumulative growth percent value was arrived at for the 2010-2025 period by taking the Q1 2025 and subtracting 100 (then rounding). The same value was arrived at for the 2000-2025 period by computing `({Q1_2025 - Q1_2000} / {Q1_2000}) * 100` (then rounding).
