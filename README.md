@@ -63,6 +63,3 @@ This script was used to generate stats on real wages growth in OECD countries si
 
 ### `./exploring_change_in_urban_area/global_human_settlement_layer.py`
 This one uses data I pulled down from [the Global Human Settlement Layer website](https://human-settlement.emergency.copernicus.eu/GHSLDataTools.php) to try to see if there was anything to be learned about property price growth from urban land expansion. The link to download the .xlsx file is [here](https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_UCDB_GLOBE_R2024A/GHS_UCDB_GLOBE_R2024A/V1-1/GHS_UCDB_GLOBE_R2024A_V1_1.zip). The link to download the .csv file is [here](https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_UCDB_GLOBE_R2024A/GHS_UCDB_MTUC_GLOBE_R2024A/V1-1/GHS_UCDB_MTUC_GLOBE_R2024A_V1_1.zip).
-
-### `portugal_since_2018.py`
-This is another dodgy, vibe-coded script that uses hard-coded population and dwellings data in order to output a visualisation of Portugal's lacklustre dwelling completions since 2018.
