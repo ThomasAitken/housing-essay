@@ -1,6 +1,6 @@
-# Data Analysis for "The Real Causes of Expensive Housing: A Rigorous, Global Perspective"
+# Data Analysis for "The Real Causes of Expensive Housing: A Global Perspective"
 
-This is the repo accompanying my Substack post, "The Real Causes of Expensive Housing: A Rigorous, Global Perspective". This is not my finest work as a programmer; it just a rough-and-ready collection of the scripts that I wrote (with AI assistance) to generate the datasets and charts that informed my essay.
+This is the repo accompanying my Substack post, "The Real Causes of Expensive Housing: A Global Perspective". This is not my finest work as a programmer; it just a rough-and-ready collection of the scripts that I wrote (with AI assistance) to generate the datasets and charts that informed my essay.
 
 I am just open-sourcing in the interests of transparency, and so I can document how I obtained my datasets.
 
